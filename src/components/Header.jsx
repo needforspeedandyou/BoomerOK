@@ -10,7 +10,6 @@ export const Header = (props) => {
                 <NavLink className={({ isActive }) => isActive ? 'text-bmw' : 'text-black'} to='/'>Home</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'text-bmw' : 'text-black'} to='/projects'>Projects</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'text-bmw' : 'text-black'} to='/sell'>Sell</NavLink>
-                <NavLink className='w-[84px] bg-[#C2C2C2] h-[60px] flex items-center justify-center' to='/signup'>Sign up</NavLink>
             </nav>
             <div className="flex gap-[6px] cursor-pointer"><p>{props.lang}</p><img src={lang_icon} alt="lang" /></div>
         </div>

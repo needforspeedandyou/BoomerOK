@@ -3,6 +3,8 @@ import { Header } from './components/Header'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { useState } from 'react'
+import { ProjectsPage } from './pages/ProjectsPage'
+import { SellPage } from './pages/SellPage'
 
 function App() {
   const [lang, setLang] = useState('English')
@@ -12,9 +14,9 @@ function App() {
       <BrowserRouter>
         <Header lang={lang}/>
         <Routes>
-          <Route element={<HomePage></HomePage>}></Route>
-          <Route element={<></>}></Route>
-          <Route element={<></>}></Route>
+          <Route path='/' element={<HomePage></HomePage>} />
+          <Route path='/projects' element={<ProjectsPage></ProjectsPage>} />
+          <Route path='/sell' element={<SellPage></SellPage>}></Route>
         </Routes>
       </BrowserRouter>
     </>
