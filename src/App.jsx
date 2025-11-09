@@ -6,19 +6,26 @@ import { useState } from "react";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import { ProjectDetails } from "./pages/ProjectDetails";
 import { SellPage } from "./pages/SellPage";
+import { AuthPage } from "./pages/AuthPage";
+import { useEffect } from "react";
 
 function App() {
-  const [lang, setLang] = useState("English");
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    setIsAdmin(localStorage.getItem("admin") == "true");
+  }, []);
 
   return (
     <>
       <BrowserRouter>
-        <Header lang={lang} />
+        <Header isAdmin={isAdmin} />
         <Routes>
           <Route path="/" element={<HomePage></HomePage>} />
           <Route path="/projects" element={<ProjectsPage></ProjectsPage>} />
-          <Route path="/sell" element={<SellPage></SellPage>}></Route>
+          <Route path="/sell" element={<SellPage admin={isAdmin}></SellPage>}></Route>
           <Route path="/projects/:id" element={<ProjectDetails />} />
+          <Route path="/auth" element={<AuthPage />}></Route>
         </Routes>
       </BrowserRouter>
     </>

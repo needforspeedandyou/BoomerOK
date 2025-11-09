@@ -13,7 +13,7 @@ export const projects = [
     model: "E34",
     mileage: "238000",
     cost: "7000",
-    image: "https://i.ibb.co/rKZ5zZy7/project-1.png",
+    image: "https://i.ibb.co/rKZ5zZy7/project-1.pngs",
   },
   {
     id: "2",
@@ -29,7 +29,7 @@ export const projects = [
     model: "E46",
     mileage: "300000",
     cost: "12000",
-    image: "https://i.ibb.co/v689cBPB/project-2.png",
+    image: "https://i.ibb.co/v689cBPB/project-2.pngs",
   },
   {
     id: "3",
@@ -45,7 +45,7 @@ export const projects = [
     model: "E90",
     mileage: "344000",
     cost: "10500",
-    image: "https://i.ibb.co/Wp7RHWfp/project-3.png",
+    image: "https://i.ibb.co/Wp7RHWfp/project-3.pngs",
   },
   {
     id: "4",
@@ -61,6 +61,6 @@ export const projects = [
     model: "M4 G82",
     mileage: "12000",
     cost: "86300",
-    image: "https://i.ibb.co/nqvf8qKX/project-4.png",
+    image: "https://i.ibb.co/nqvf8qKX/project-4.pngs",
   },
 ];
