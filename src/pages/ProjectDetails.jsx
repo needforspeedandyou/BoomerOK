@@ -1,9 +1,13 @@
 import { useParams, Link } from "react-router-dom";
-import { projects } from "../data/projectsData";
+import { projects } from "./../data/projectsData";
+
+const projectsData = JSON.parse(localStorage.getItem('projects')) || projects;
 
 export const ProjectDetails = () => {
   const { id } = useParams();
-  const project = projects.find((p) => p.id === id);
+  const project = projectsData.find((p) => p.id === id);
+
+  console.log(project)
 
   return (
     <div className="w-[1320px] m-auto mt-12.5">
@@ -11,7 +15,7 @@ export const ProjectDetails = () => {
         ← Back to projects
       </Link>
       <div className="mt-2   flex justify-between relative">
-        <img src={project.image} className="w-[516px] h-[344px] rounded-xl" />
+        <img src={project.image} alt="" className="w-[516px] h-[344px] rounded-xl" />
         <div className="flex flex-col gap-1.25">
           <p className="w-[685px] text-3xl">
             BMW {project.model} <span className="text-[#00000020]">-</span> <span className="text-2xl">{project.series}</span>

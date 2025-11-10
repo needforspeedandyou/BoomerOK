@@ -3,8 +3,11 @@ import arrow_icon from "./../assets/arrow_icon.svg";
 import { projects } from "./../data/projectsData.js";
 import { Link } from "react-router-dom";
 
-const seriesOptions = [...new Set(projects.map((p) => p.series))];
-const modelOptions = [...new Set(projects.map((p) => p.model))];
+
+const projectsData = JSON.parse(localStorage.getItem('projects')) || projects;
+
+const seriesOptions = [...new Set(projectsData.map((p) => p.series))];
+const modelOptions = [...new Set(projectsData.map((p) => p.model))];
 
 export const ProjectsPage = () => {
   const [year, setYear] = useState(false);
@@ -16,10 +19,10 @@ export const ProjectsPage = () => {
   const [selectedSeries, setSelectedSeries] = useState([]);
   const [selectedModels, setSelectedModels] = useState([]);
 
-  const filteredProjects = projects.filter((project) => {
-    const matchSeries = selectedSeries.length === 0 || selectedSeries.includes(project.series);
-    const matchYear = (minYear === "" || project.year >= minYear) && (maxYear === "" || project.year <= maxYear);
-    const matchModel = selectedModels.length === 0 || selectedModels.includes(project.model);
+  const filteredProjects = projectsData.filter((project) => {
+    const matchSeries = selectedSeries.length === 0 || selectedSeries.includes(projectsData.series);
+    const matchYear = (minYear === "" || projectsData.year >= minYear) && (maxYear === "" || projectsData.year <= maxYear);
+    const matchModel = selectedModels.length === 0 || selectedModels.includes(projectsData.model);
 
     return matchSeries && matchYear && matchModel;
   });
@@ -41,7 +44,7 @@ export const ProjectsPage = () => {
     setSelectedModels((prev) => (prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]));
   };
 
-  useEffect(() => {}, [selectedSeries]);
+  useEffect(() => { }, [selectedSeries]);
 
   return (
     <div className="w-[1320px] m-auto mt-[50px] relative">
