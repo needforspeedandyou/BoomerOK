@@ -20,9 +20,9 @@ export const ProjectsPage = () => {
   const [selectedModels, setSelectedModels] = useState([]);
 
   const filteredProjects = projectsData.filter((project) => {
-    const matchSeries = selectedSeries.length === 0 || selectedSeries.includes(projectsData.series);
-    const matchYear = (minYear === "" || projectsData.year >= minYear) && (maxYear === "" || projectsData.year <= maxYear);
-    const matchModel = selectedModels.length === 0 || selectedModels.includes(projectsData.model);
+    const matchSeries = selectedSeries.length === 0 || selectedSeries.includes(project.series);
+    const matchYear = (minYear === "" || project.year >= minYear) && (maxYear === "" || project.year <= maxYear);
+    const matchModel = selectedModels.length === 0 || selectedModels.includes(project.model);
 
     return matchSeries && matchYear && matchModel;
   });
@@ -51,11 +51,11 @@ export const ProjectsPage = () => {
       <div className="flex justify-between align-center">
         <p className="text-[24px]">Projects</p>
         <div className="flex gap-[15px]">
-          <button onClick={() => handleClick("setYear")} className="flex gap-[10px] hover:border-bmw text-[#000000] px-[25px] py-[6px] rounded-[9px] border-[#BFBFBF] border cursor-pointer bg-[#D9D9D930] hover:opacity-60">
+          <button onClick={() => handleClick("setYear")} className="flex gap-2,5 hover:border-bmw text-[#000000] px-[25px] py-1.5 rounded-[9px] border-[#BFBFBF] border cursor-pointer bg-[#D9D9D930] hover:opacity-60">
             Year<img src={arrow_icon} alt=""></img>
           </button>
           {year ? (
-            <div className="min-w-[200px] flex flex-col gap-[5px] justify-between border border-[#BFBFBF] bg-white top-[40px] p-[20px] rounded-[9px] absolute">
+            <div className="min-w-[200px] flex flex-col gap-[5px] justify-between border border-[#BFBFBF] bg-white top-10 p-5 rounded-[9px] absolute">
               <div className="flex justify-between items-center">
                 <p className="text-[18px]">From</p>
                 <input type="text" placeholder="1900" className="border border-[#BFBFBF] w-[100px] p-[5px]" onChange={(e) => setMinYear(e.target.value)} />
@@ -68,11 +68,11 @@ export const ProjectsPage = () => {
           ) : (
             ""
           )}
-          <button onClick={() => handleClick("setSeries")} className="hover:border-bmw flex gap-[10px] text-[#000000] px-[25px] py-[6px] rounded-[9px] border-[#BFBFBF] border cursor-pointer bg-[#D9D9D930] hover:opacity-60">
+          <button onClick={() => handleClick("setSeries")} className="hover:border-bmw flex gap-2.5 text-[#000000] px-[25px] py-1.5 rounded-[9px] border-[#BFBFBF] border cursor-pointer bg-[#D9D9D930] hover:opacity-60">
             Series<img src={arrow_icon} alt=""></img>
           </button>
           {series ? (
-            <div className="p-[20px] border border-[#BFBFBF] bg-white ml-[120px] top-[40px] rounded-[9px] absolute">
+            <div className="p-5 border border-[#BFBFBF] bg-white ml-[120px] top-10 rounded-[9px] absolute">
               {seriesOptions.map((option) => (
                 <div key={option} className="cursor-pointer" onClick={() => toggleSelectSeries(option)}>
                   <input type="checkbox" checked={selectedSeries.includes(option)} readOnly className="mr-2 cursor-pointer" />
@@ -83,11 +83,11 @@ export const ProjectsPage = () => {
           ) : (
             ""
           )}
-          <button onClick={() => handleClick("setModel")} className="hover:border-bmw flex gap-[10px] text-[#000000] px-[25px] py-[6px] rounded-[9px] border-[#BFBFBF] border cursor-pointer bg-[#D9D9D930] hover:opacity-60">
+          <button onClick={() => handleClick("setModel")} className="hover:border-bmw flex gap-2.5 text-[#000000] px-[25px] py-1.5 rounded-[9px] border-[#BFBFBF] border cursor-pointer bg-[#D9D9D930] hover:opacity-60">
             Model <img src={arrow_icon} alt=""></img>
           </button>
           {model ? (
-            <div className="p-[20px] border border-[#BFBFBF] bg-white ml-[250px] top-[40px] rounded-[9px] absolute">
+            <div className="p-5 border border-[#BFBFBF] bg-white ml-[250px] top-10 rounded-[9px] absolute">
               {modelOptions.map((option) => (
                 <div key={option} className="cursor-pointer" onClick={() => toggleSelectModel(option)}>
                   <input type="checkbox" checked={selectedModels.includes(option)} readOnly className="mr-2 cursor-pointer" />
@@ -101,7 +101,7 @@ export const ProjectsPage = () => {
         </div>
       </div>
 
-      <div className="mt-[20px] flex flex-col justify-between gap-y-[50px]">
+      <div className="mt-5 flex flex-col justify-between gap-y-[50px]">
         {filteredProjects.map((project) => (
           <Link to={`/projects/${project.id}`}>
             <div key={project.id} className="flex justify-between h-[277px] gap-[121px] hover:underline">
@@ -123,7 +123,7 @@ export const ProjectsPage = () => {
                     {project.engineVolume}L | {project.fuel}
                   </p>
                   <p className="text-green-500 font-semibold text-[24px]">{project.cost}$</p>
-                  <p className="mt-[10px]">{project.description}</p>
+                  <p className="mt-2.5">{project.description}</p>
                 </div>
                 <p className="text-[#00000070]">{project.date}</p>
               </div>

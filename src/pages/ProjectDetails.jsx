@@ -6,9 +6,6 @@ const projectsData = JSON.parse(localStorage.getItem('projects')) || projects;
 export const ProjectDetails = () => {
   const { id } = useParams();
   const project = projectsData.find((p) => p.id === id);
-
-  console.log(project)
-
   return (
     <div className="w-[1320px] m-auto mt-12.5">
       <Link to="/projects" className="underline text-[#00000090]">
@@ -30,10 +27,13 @@ export const ProjectDetails = () => {
           </div>
           <p className="text-2xl text-green-500 font-semibold">{project.cost}$</p>
           <p>{project.description}</p>
-          <button className="mt-[20px] rounded-[3px] border border-[#BFBFBF] bg-[#00000010] py-2 text-xl font-semibold cursor-pointer ">Contact</button>
+          <button className="mt-5 rounded-[3px] border border-[#BFBFBF] bg-[#00000010] py-2 text-xl font-semibold cursor-pointer ">Contact</button>
           <div className="flex gap-[100px] absolute bottom-0">
             <p>Date: {project.date}</p>
-            <button className="underline cursor-pointer">Add to favourites</button>
+            <button onClick={() => {
+              localStorage.setItem("projects", JSON.stringify(projectsData.filter(p => p !== project)))
+              window.location.href = '/projects';
+            }} className="underline cursor-pointer text-red-700">Delete</button>
           </div>
         </div>
       </div>
